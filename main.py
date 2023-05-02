@@ -16,7 +16,7 @@ probas = preds_to_data(c1, c2).unsqueeze(0).to(DEVICE)
 prediction = Morpheus(probas).argmax(1).item()
 out3 = list(CLASSES_1.keys())[prediction]
 
-final_verdict = final_say(out1, out2, out3)
+final_verdict = final_say(v1, v2, out3)
 print(final_verdict)
 
 
