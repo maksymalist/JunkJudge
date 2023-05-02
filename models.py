@@ -26,9 +26,9 @@ def CONV_NN(num_classes):
     return model
 
 
-class Predictioneer3000(nn.Module):
+class MorpheusModel(nn.Module):
   def __init__(self, num_inputs, num_outputs):
-    super(Predictioneer3000, self).__init__()
+    super(MorpheusModel, self).__init__()
 
     self.l1 = nn.Linear(num_inputs, 256)
     self.relu = nn.ReLU()
