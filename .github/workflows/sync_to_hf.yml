@@ -13,20 +13,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
         with:
-          fetch-depth: 0
-          
-          
-      - name: Install Git LFS and huggingface-cli
-        run: |
-          sudo apt-get update
-          sudo apt-get install python3-pip
-          python -m venv .env
-          source .env/bin/activate
-          pip3 install --upgrade huggingface_hub
-          huggingface-cli lfs-enable-largefiles ${{ github.workspace }}
-          git lfs install
-          git lfs track "*.jpg"
-          
+          fetch-depth: 0   
           
       - name: Push to hub
         env:
