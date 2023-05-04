@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # JunkJudge README
 
 JunkJudge is an AI-powered web application that helps users classify waste materials as either recyclable, non-recyclable or hazardous. This document serves as a guide for users on how to use JunkJudge.
@@ -41,3 +42,8 @@ To use JunkJudge, visit the [website](https://www.junkjudge.com/) and upload an 
 ### “Morpheus”
 
 “Morpheus” is like the glue that holds everything together. It uses a custom made dataset called “Oracle”, that was made using the combination of the predicated probabilities of “Neo” and “Trinity”, to classify the item using the given stats.
+=======
+---
+license: mit
+---
+>>>>>>> 5ec19cd (initial commit)
