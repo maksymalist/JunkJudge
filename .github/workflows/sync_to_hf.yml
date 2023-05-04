@@ -20,7 +20,9 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install python3-pip
-          pip3 install huggingface-cli
+          python -m venv .env
+          source .env/bin/activate
+          pip3 install --upgrade huggingface_hub
           
           
       - name: Enable Large Files with Hugging Face CLI
