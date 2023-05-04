@@ -24,6 +24,8 @@ jobs:
           source .env/bin/activate
           pip3 install --upgrade huggingface_hub
           huggingface-cli lfs-enable-largefiles ${{ github.workspace }}
+          git lfs install
+          git lfs track "*.jpg"
           
           
       - name: Push to hub
