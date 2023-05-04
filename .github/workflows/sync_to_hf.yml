@@ -19,5 +19,7 @@ jobs:
         env:
           HF_TOKEN: ${{ secrets.HF_TOKEN }}
         run: |
+          ls test
+          ls images
           git push --force https://maksymalist:$HF_TOKEN@huggingface.co/maksymalist/junk-judge main
         
