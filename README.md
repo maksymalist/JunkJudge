@@ -4,7 +4,7 @@ JunkJudge is an AI-powered web application that helps users classify waste mater
 
 ## Getting Started
 
-To use JunkJudge, visit the [website](https://www.junkjudge.com/) and upload an image of the waste material that you want to classify. JunkJudge will then use its AI algorithms to analyze the image and classify the waste material into one of the following categories:
+To use JunkJudge, visit the [website](https://www.junkjudge.com/1) and upload an image of the waste material that you want to classify. JunkJudge will then use its AI algorithms to analyze the image and classify the waste material into one of the following categories:
 
 - Recyclable
 - Non-recyclable
