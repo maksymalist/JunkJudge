@@ -19,7 +19,5 @@ jobs:
         env:
           HF_TOKEN: ${{ secrets.HF_TOKEN }}
         run: |
-          git ls-files -s --cached
-          ls -l images/biological/IMG_2437.jpg
           git push --force https://maksymalist:$HF_TOKEN@huggingface.co/maksymalist/junk-judge main
         
