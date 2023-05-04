@@ -28,7 +28,8 @@ jobs:
           
       - name: Enable Large Files with Hugging Face CLI
         run:
-          huggingface-cli lfs-enable-largefiles .
+          huggingface-cli lfs-enable-largefiles ${{ github.workspace }}
+          
           
       - name: Push to hub
         env:
