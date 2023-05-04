@@ -16,6 +16,13 @@ jobs:
           fetch-depth: 0
           
           
+      - name: Install Git LFS and huggingface-cli
+        run: 
+          sudo apt-get update
+          sudo apt-get install python3-pip
+          pip3 install huggingface-cli
+          
+          
       - name: Enable Large Files with Hugging Face CLI
         run:
           huggingface-cli lfs-enable-largefiles .
