@@ -17,7 +17,7 @@ jobs:
           
           
       - name: Install Git LFS and huggingface-cli
-        run: 
+        run: |
           sudo apt-get update
           sudo apt-get install python3-pip
           pip3 install huggingface-cli
@@ -30,5 +30,7 @@ jobs:
       - name: Push to hub
         env:
           HF_TOKEN: ${{ secrets.HF_TOKEN }}
-        run: huggingface-cli lfs-enable-largefiles . && git push --force https://maksymalist:$HF_TOKEN@huggingface.co/maksymalist/junk-judge main
+        run: |
+          huggingface-cli lfs-enable-largefiles .
+          git push --force https://maksymalist:$HF_TOKEN@huggingface.co/maksymalist/junk-judge main
         
