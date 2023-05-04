@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # JunkJudge README
 
 JunkJudge is an AI-powered web application that helps users classify waste materials as either recyclable, non-recyclable or hazardous. This document serves as a guide for users on how to use JunkJudge.
@@ -29,21 +28,15 @@ To use JunkJudge, visit the [website](https://www.junkjudge.com/) and upload an 
 ### Description
 
 > JunkJudge's AI algorithm leverages the power of Ensemble Learning, with which it combines the outputs of 2 Convolutional Neural Network that were trained using transfer learning with the “ConvNext-tiny” dataset called “Neo” and “Trinity”. To get the final verdict, it passes both of the predictions trough the final model called “Morpheus”
-> 
 
 ### “Neo”
 
-“Neo” is a codename given to the first model which takes in an image as an input and spits out a probability distributed over 7 classes (biological 🌱,  trash 🗑️,  paper 📄,  cardboard 📦,  metal 🤘, glass 🍾,  plastic ♳). 
+“Neo” is a codename given to the first model which takes in an image as an input and spits out a probability distributed over 7 classes (biological 🌱, trash 🗑️, paper 📄, cardboard 📦, metal 🤘, glass 🍾, plastic ♳).
 
 ### “Trinity”
 
-“Trinity” is a codename given to the first model which takes in an image as an input and spits out a probability distributed over 6 classes (trash 🗑️,  paper 📄,  cardboard 📦,  metal 🤘, glass 🍾,  plastic ♳).  Notice that Trinity does not have a biological output, the reason for that being that Neo is capable enough to judge for it’s self that an item is biological waist given their unique features.
+“Trinity” is a codename given to the first model which takes in an image as an input and spits out a probability distributed over 6 classes (trash 🗑️, paper 📄, cardboard 📦, metal 🤘, glass 🍾, plastic ♳). Notice that Trinity does not have a biological output, the reason for that being that Neo is capable enough to judge for it’s self that an item is biological waist given their unique features.
 
 ### “Morpheus”
 
 “Morpheus” is like the glue that holds everything together. It uses a custom made dataset called “Oracle”, that was made using the combination of the predicated probabilities of “Neo” and “Trinity”, to classify the item using the given stats.
-=======
----
-license: mit
----
->>>>>>> 5ec19cd (initial commit)
