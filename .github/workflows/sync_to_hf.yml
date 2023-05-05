@@ -15,12 +15,10 @@ jobs:
           fetch-depth: 0
       - name: Add remote 
         env:
-          HF: ${{ secrets.HF }}
+          HF: ${{ secrets.HF_TOKEN }}
         run: git remote add space https://maksymalist:$HF@huggingface.co/spaces/maksymalist/JunkJudge
       - name: Push to hub
         env:
-          HF: ${{ secrets.HF }}
+          HF: ${{ secrets.HF_TOKEN }}
         run: |
-          git config --global user.name "maksymalist"
-          git config --global user.email "maksym.vovkk@gmail.com"
           git push https://maksymalist:$HF@huggingface.co/spaces/maksymalist/JunkJudge main
