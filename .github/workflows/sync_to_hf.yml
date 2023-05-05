@@ -21,4 +21,5 @@ jobs:
         env:
           HF: ${{ secrets.HF_TOKEN }}
         run: |
+          git pull
           git push https://maksymalist:$HF@huggingface.co/spaces/maksymalist/JunkJudge main
