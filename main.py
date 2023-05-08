@@ -5,10 +5,10 @@ from gen_dataset import preds_to_data, data_to_preds
 from algo import final_say
 import matplotlib.pyplot as plt
 
-seed = 123456
+seed = 123456789
 torch.manual_seed(seed)
 
-img1 = Image.open("images/trash/IMG_2451.jpg")
+img1 = Image.open("images/biological/IMG_2437.jpg")
 
 c1, c2, v1, v2, out1, out2 = get_predictions(img1)
 
@@ -16,7 +16,7 @@ probas = preds_to_data(c1, c2).unsqueeze(0).to(DEVICE)
 prediction = Morpheus(probas).argmax(1).item()
 out3 = list(CLASSES_1.keys())[prediction]
 
-final_verdict = final_say(v1, v2, out3)
+final_verdict = final_say(v1, v2, out1, out2, out3, probas)
 print(final_verdict)
 
 

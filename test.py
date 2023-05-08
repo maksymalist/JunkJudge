@@ -34,7 +34,14 @@ for idx, (path, label) in enumerate(images):
     probas = preds_to_data(c1, c2).unsqueeze(0).to(DEVICE)
     prediction = Morpheus(probas).argmax(1).item()
     out3 = list(CLASSES_1.keys())[prediction]
-    final_verdict = final_say(out1, out2, out3)
+    final_verdict = final_say(
+        v1=v1,  # dict of the most confident classes from the first model
+        v2=v2,  # dict of the most confident classes from the second model
+        out1=out1, # the most confident class from the first model
+        out2=out2, # the most confident class from the second model
+        out3=out3, # the most confident class from the third model
+        probas=probas # the probabilities from the first and second model
+    )
     
     if label == final_verdict:
         accuracy += 1
@@ -42,8 +49,10 @@ for idx, (path, label) in enumerate(images):
         wrong.append((v1, v2, label, final_verdict, path))
         
     print(f"{ '✅' if label == final_verdict else '❌'} {idx+1}. #{path}", label, "->", final_verdict)
+    print("\n")
     
 print(f"Accuracy: {accuracy/len(images)}")
+print(f"Mistakes {len(wrong)}/{len(images)}")
 
 
 for (v1, v2, label, final_verdict, path) in wrong:
