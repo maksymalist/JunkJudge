@@ -1,7 +1,7 @@
 import pinecone
 
 REGION = "us-east-1-aws"
-API_KEY = "YOUR_API_KEY"
+API_KEY = "e32e440b-3009-46a8-9335-8492cdd51ee6"
 
 pinecone.init(api_key=API_KEY,
               environment=REGION)

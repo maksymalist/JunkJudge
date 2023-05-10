@@ -5,8 +5,7 @@ from PIL import Image
 import os
 import matplotlib.pyplot as plt
 
-seed = 123456
-torch.manual_seed(seed)
+torch.manual_seed(SEED)
 
 img_dir = "./images/"
 images = []
