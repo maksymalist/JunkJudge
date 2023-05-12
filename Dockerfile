@@ -1,6 +1,11 @@
-# Use the official lightweight Python image.
-# https://hub.docker.com/_/python
-FROM python:3.9-slim-buster
+# Use the official Amazon Linux 2 image.
+# https://hub.docker.com/_/amazonlinux
+FROM amazonlinux:2
+
+# Install the required packages to build and run Python applications.
+RUN yum -y update && \
+    yum -y install python3 python3-devel python3-pip wget unzip && \
+    yum clean all
 
 # Set the working directory.
 WORKDIR /app
@@ -8,8 +13,8 @@ WORKDIR /app
 # Copy the requirements.txt file.
 COPY requirements.txt .
 
-# Install wget, unzip, and Flask.
-RUN apt-get update && apt-get install -y wget unzip && pip install -r requirements.txt
+# Install the required Python packages.
+RUN pip3 install --no-cache-dir -r requirements.txt
 
 # Download and extract the models.zip file.
 RUN wget https://github.com/maksymalist/JunkJudge/releases/download/v1.0/models.zip -O models.zip && \
@@ -24,8 +29,6 @@ EXPOSE 5000
 
 # Set the environment variable for Flask
 ENV FLASK_APP=main.py
-
-RUN  ls -l
 
 # Start the Flask application.
 CMD ["flask", "run", "--host=0.0.0.0"]
