@@ -1,0 +1,4 @@
+./images
+./model_training
+./.venv
+./__pycache__

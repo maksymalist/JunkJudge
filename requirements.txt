@@ -6,3 +6,4 @@ numpy
 pandas
 pinecone-client[grpc]
 flask
+flask-cors
