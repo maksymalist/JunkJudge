@@ -8,13 +8,12 @@ from flask import Flask, request
 from flask_cors import CORS, cross_origin
 import json
 import urllib.request
+from utils import SEED
 
 
 app = Flask(__name__)
 CORS(app, resources={r"/*": {"origins": "*"}})
-
-seed = 123456789
-torch.manual_seed(seed)
+torch.manual_seed(SEED)
 
 @app.route('/api/v1/predict', methods=['POST'])
 @cross_origin(origin='*',headers=['Content-Type','Authorization'])
