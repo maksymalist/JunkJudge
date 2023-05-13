@@ -15,6 +15,11 @@ app = Flask(__name__)
 CORS(app, resources={r"/*": {"origins": "*"}})
 torch.manual_seed(SEED)
 
+@app.route('/', methods=['GET'])
+@cross_origin(origin='*',headers=['Content-Type','Authorization'])
+def index():
+    return "Hello, World!"
+
 @app.route('/api/v1/predict', methods=['POST'])
 @cross_origin(origin='*',headers=['Content-Type','Authorization'])
 def predict():
@@ -34,7 +39,7 @@ def predict():
     return final_verdict
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host='0.0.0.0', port=5000)
 
 
 # VISUALIZATION
