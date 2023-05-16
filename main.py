@@ -60,7 +60,3 @@ if __name__ == '__main__':
 # ax[2].set_title(final_verdict)
 
 # plt.show()
-
-
-
-
