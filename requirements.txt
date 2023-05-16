@@ -6,3 +6,4 @@ pinecone-client
 flask
 flask-cors
 urllib3==1.25.11
+gunicorn

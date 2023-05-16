@@ -10,36 +10,36 @@ import json
 import urllib.request
 from utils import SEED
 
-
-app = Flask(__name__)
-CORS(app, resources={r"/*": {"origins": "*"}})
 torch.manual_seed(SEED)
 
-@app.route('/', methods=['GET'])
-@cross_origin(origin='*',headers=['Content-Type','Authorization'])
-def index():
-    return "Hello, World!"
+def init():
+    app = Flask(__name__)
+    CORS(app, resources={r"/*": {"origins": "*"}})
 
-@app.route('/api/v1/predict', methods=['POST'])
-@cross_origin(origin='*',headers=['Content-Type','Authorization'])
-def predict():
-    json_data = request.get_json() 
-    
-    image = urllib.request.urlretrieve(json_data['image'], "image.jpg")
-    image = Image.open("image.jpg")
-    
-    c1, c2, v1, v2, out1, out2 = get_predictions(image)
+    @app.route('/', methods=['GET'])
+    @cross_origin(origin='*',headers=['Content-Type','Authorization'])
+    def index():
+        return "Hello, World!"
 
-    probas = preds_to_data(c1, c2).unsqueeze(0).to(DEVICE)
-    prediction = Morpheus(probas).argmax(1).item()
-    out3 = list(CLASSES_1.keys())[prediction]
-    
-    final_verdict = final_say(v1, v2, out1, out2, out3, probas)
-    
-    return final_verdict
+    @app.route('/api/v1/predict', methods=['POST'])
+    @cross_origin(origin='*',headers=['Content-Type','Authorization'])
+    def predict():
+        json_data = request.get_json() 
+        
+        image = urllib.request.urlretrieve(json_data['image'], "image.jpg")
+        image = Image.open("image.jpg")
+        
+        c1, c2, v1, v2, out1, out2 = get_predictions(image)
 
-if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000)
+        probas = preds_to_data(c1, c2).unsqueeze(0).to(DEVICE)
+        prediction = Morpheus(probas).argmax(1).item()
+        out3 = list(CLASSES_1.keys())[prediction]
+        
+        final_verdict = final_say(v1, v2, out1, out2, out3, probas)
+        
+        return final_verdict
+    
+    return app
 
 
 # VISUALIZATION
