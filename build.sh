@@ -6,12 +6,6 @@ sudo apt update
 # Install required packages
 sudo apt install -y wget zip unzip gunicorn python3-pip python3-dev build-essential libssl-dev libffi-dev python3-setuptools
 
-# Clone the repository
-git clone https://github.com/maksymalist/JunkJudge.git
-
-# Navigate into the cloned repository
-cd JunkJudge
-
 # Install virtualenv
 sudo apt install python3-venv
 
