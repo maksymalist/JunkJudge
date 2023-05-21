@@ -162,3 +162,5 @@ cython_debug/
 # custom
 models
 images
+
+__MACOSX
