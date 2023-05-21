@@ -9,6 +9,9 @@ from flask_cors import CORS, cross_origin
 import json
 import urllib.request
 from utils import SEED
+import os
+from io import BytesIO
+import base64
 
 torch.manual_seed(SEED)
 
@@ -24,10 +27,9 @@ def index():
 @cross_origin(origin='*',headers=['Content-Type','Authorization'])
 def predict():
     json_data = request.get_json() 
-    
-    image = urllib.request.urlretrieve(json_data['image'], "image.jpg")
-    image = Image.open("image.jpg")
-    
+    b64 = json_data['image_b64']
+        
+    image = Image.open(BytesIO(base64.b64decode(b64)))
     c1, c2, v1, v2, out1, out2 = get_predictions(image)
 
     probas = preds_to_data(c1, c2).unsqueeze(0).to(DEVICE)
