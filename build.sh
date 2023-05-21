@@ -17,9 +17,9 @@ pip3 install -r requirements.txt
 pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cpu
 
 wget https://github.com/maksymalist/JunkJudge/releases/download/v1.0/models.zip -O models.zip && \
-    unzip -d models.zip && \
+    unzip models.zip && \
     rm models.zip
 
 sudo ufw allow 5000
 
-gunicorn --bind 0.0.0.0:5000 wsgi:app
+gunicorn --bind 0.0.0.0:5000 wsgi:app --daemon
