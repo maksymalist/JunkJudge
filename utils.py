@@ -1,13 +1,25 @@
 import torch
 from process_image import transform
 from models import CONV_NN, MorpheusModel
+import os
+import numpy as np
+import random
 
 DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
 CLASSES_1 = {'biological': 0, 'cardboard': 1, 'glass': 2, 'metal': 3, 'paper': 4, 'plastic': 5, 'trash': 6} # XL model for bio + trash
 CLASSES_2 = {'cardboard': 0, 'glass': 1, 'metal': 2, 'paper': 3, 'plastic': 4, 'trash': 5} # regular model for everything else
-SEED = 123456
 
-torch.manual_seed(SEED)
+def seed_everything(seed=123456):
+    os.environ['PYTHONHASHSEED'] = str(seed)
+    random.seed(seed)
+    np.random.seed(seed)
+    torch.manual_seed(seed)
+    torch.cuda.manual_seed(seed)
+    torch.cuda.manual_seed_all(seed)
+    torch.backends.cudnn.deterministic = True
+    torch.backends.cudnn.benchmark = False
+
+seed_everything()
 
 # first model that determines if it's biological or trash
 Neo = CONV_NN(len(CLASSES_1))

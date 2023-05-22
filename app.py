@@ -8,12 +8,11 @@ from flask import Flask, request
 from flask_cors import CORS, cross_origin
 import json
 import urllib.request
-from utils import SEED
 import os
 from io import BytesIO
 import base64
 
-torch.manual_seed(SEED)
+seed_everything()
 
 app = Flask(__name__)
 CORS(app, resources={r"/*": {"origins": "*"}})
