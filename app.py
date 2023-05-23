@@ -36,14 +36,17 @@ def predict():
     out3 = list(CLASSES_1.keys())[prediction]
     
     final_verdict = final_say(v1, v2, out1, out2, out3, probas)
-    print(final_verdict)
     
-    return jsonify({
+    output = jsonify({
         "result": final_verdict,
         "m1_confidence": v1,
         "m2_confidence": v2,
         "probabilities": probas.tolist(),
     })
+    
+    print(output)
+    
+    return output
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)
