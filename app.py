@@ -46,7 +46,7 @@ def predict():
     
     print(output)
     
-    return output
+    return final_verdict
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)
