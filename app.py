@@ -4,7 +4,7 @@ from PIL import Image
 from gen_dataset import preds_to_data, data_to_preds
 from algo import final_say
 import matplotlib.pyplot as plt
-from flask import Flask, request
+from flask import Flask, request, jsonify
 from flask_cors import CORS, cross_origin
 import json
 import urllib.request
@@ -36,8 +36,14 @@ def predict():
     out3 = list(CLASSES_1.keys())[prediction]
     
     final_verdict = final_say(v1, v2, out1, out2, out3, probas)
+    print(final_verdict)
     
-    return final_verdict
+    return jsonify({
+        "result": final_verdict,
+        "m1_confidence": v1,
+        "m2_confidence": v2,
+        "probabilities": probas.tolist(),
+    })
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)

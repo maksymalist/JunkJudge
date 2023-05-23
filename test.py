@@ -5,7 +5,7 @@ from PIL import Image
 import os
 import matplotlib.pyplot as plt
 
-torch.manual_seed(SEED)
+seed_everything()
 
 img_dir = "./images/"
 images = []
@@ -32,7 +32,6 @@ for idx, (path, label) in enumerate(images):
     
     
     probas = preds_to_data(c1, c2).unsqueeze(0).to(DEVICE)
-    print(probas)
     prediction = Morpheus(probas).argmax(1).item()
     out3 = list(CLASSES_1.keys())[prediction]
     final_verdict = final_say(
