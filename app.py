@@ -37,12 +37,12 @@ def predict():
     
     final_verdict = final_say(v1, v2, out1, out2, out3, probas)
     
-    output = jsonify({
+    output = {
         "result": final_verdict,
         "m1_confidence": v1,
         "m2_confidence": v2,
         "probabilities": probas.tolist(),
-    })
+    }
     
     print(output)
     
