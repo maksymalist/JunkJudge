@@ -9,7 +9,8 @@ from db import query_embedding
 
 seed_everything()
 
-img_dir = "./large_test/"
+SAVE_PATH = "./data/predictions_3.csv"
+img_dir = "./images/"
 images = []
 
 def get_images(folder):
@@ -103,7 +104,7 @@ prediction_df["pinecone_"] = pinecone_
 prediction_df["neo_"] = neo_
 prediction_df["trinity_"] = trinity_
 prediction_df["morpheus_"] = morpheus_
-prediction_df.to_csv("predictions_2.csv", index=False)
+prediction_df.to_csv(SAVE_PATH, index=False)
 
 
 for (v1, v2, label, final_verdict, path) in wrong:

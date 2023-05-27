@@ -164,5 +164,6 @@ models
 images
 large_test
 small_test
+.vscode
 
 __MACOSX
