@@ -16,7 +16,7 @@ source .venv/bin/activate
 pip3 install -r requirements.txt
 pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cpu
 
-wget https://github.com/maksymalist/JunkJudge/releases/download/v1.0/models.zip -O models.zip && \
+wget https://github.com/maksymalist/JunkJudge/releases/download/v1.1/models.zip -O models.zip && \
     unzip models.zip && \
     rm models.zip
 
