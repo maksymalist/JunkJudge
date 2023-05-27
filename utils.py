@@ -1,6 +1,6 @@
 import torch
 from process_image import transform
-from models import CONV_NN, MorpheusModel
+from models import CONV_NN, MorpheusModel, CONV_NN_V2
 import os
 import numpy as np
 import random
@@ -35,7 +35,7 @@ Trinity.load_state_dict(torch.load("models/trinity.pth", map_location=torch.devi
 # it takes both models' outputs and feeds them into a new model
 Morpheus = MorpheusModel(len(CLASSES_2)+len(CLASSES_1), len(CLASSES_1))
 Morpheus.to(DEVICE)
-Morpheus.load_state_dict(torch.load("models/morpheus.pth", map_location=torch.device('cpu')))
+Morpheus.load_state_dict(torch.load("models/morpheus_v2.pth", map_location=torch.device('cpu')))
 
 def map_classes(predictions, cls):
     output = {}
@@ -69,6 +69,9 @@ def get_predictions(img):
     
     out1 = list(CLASSES_1.keys())[softmax1.argmax(1).item()]
     out2 = list(CLASSES_2.keys())[softmax2.argmax(1).item()]
+    
+    print("Trinity said..", out2)
+    print("Neo said..", out1)
             
     c1 = map_classes(softmax1, CLASSES_1)
     c2 = map_classes(softmax2, CLASSES_2)

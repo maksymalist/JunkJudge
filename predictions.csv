@@ -1,0 +1,15 @@
+status,path,label,prediction,pinecone_,neo_,trinity_,morpheus_
+✅,./images_3/paper/IMG_2460.jpg,paper,paper,0.9999189376831055,paper,paper,paper
+✅,./images_3/paper/IMG_2443.jpg,paper,paper,0.9931352734565735,paper,trash,paper
+✅,./images_3/paper/IMG_2496.jpg,paper,paper,0.9993788003921509,paper,paper,paper
+✅,./images_3/paper/IMG_2427.jpg,paper,paper,0.9914343953132629,paper,trash,paper
+✅,./images_3/metal/IMG_2462.jpg,metal,metal,0.991396427154541,metal,metal,metal
+✅,./images_3/metal/IMG_2462 2.jpg,metal,metal,0.9978303909301758,metal,metal,metal
+✅,./images_3/cardboard/IMG_2428.jpg,cardboard,cardboard,0.9874499440193176,cardboard,paper,cardboard
+❌,./images_3/cardboard/IMG_2445.jpg,cardboard,trash,0.38678881525993347,cardboard,trash,cardboard
+✅,./images_3/cardboard/IMG_2420.jpg,cardboard,cardboard,0.9994049072265625,cardboard,cardboard,cardboard
+✅,./images_3/trash/IMG_2429.jpg,trash,trash,0.3858203589916229,cardboard,trash,cardboard
+✅,./images_3/trash/IMG_2451.jpg,trash,trash,0.37623193860054016,cardboard,trash,cardboard
+✅,./images_3/trash/IMG_2446.jpg,trash,trash,0.43916311860084534,plastic,trash,cardboard
+✅,./images_3/trash/IMG_2447.jpg,trash,trash,0.471850723028183,plastic,trash,plastic
+✅,./images_3/plastic/IMG_2450.jpg,plastic,plastic,0.9691851735115051,plastic,trash,plastic

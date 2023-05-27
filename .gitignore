@@ -162,5 +162,7 @@ cython_debug/
 # custom
 models
 images
+large_test
+small_test
 
 __MACOSX
