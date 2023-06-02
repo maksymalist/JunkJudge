@@ -9,8 +9,8 @@ from db import query_embedding
 
 seed_everything()
 
-SAVE_PATH = "./data/predictions_3.csv"
-img_dir = "./small_test/"
+SAVE_PATH = "./data/predictions_4.csv"
+img_dir = "./images/"
 images = []
 
 def get_images(folder):
