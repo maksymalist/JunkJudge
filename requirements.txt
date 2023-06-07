@@ -6,4 +6,5 @@ pinecone-client
 flask
 flask-cors
 gunicorn
+seaborn
 urllib3==1.25.11

@@ -19,13 +19,13 @@ def get_images(folder):
             images.append((entry.path, folder.replace(img_dir, '')))
         elif entry.is_dir():
             get_images(entry.path)
-            
-            
+
+
 def jpg_check(path):
     if path[-4:] == ".jpg":
         return True
-            
-            
+
+
 get_images(img_dir)
 
 accuracy = 0
@@ -45,24 +45,24 @@ def embedding_preds(out):
     filter={
         "class": {"$eq": out},
     }
-    
+
     data = query_embedding(probas.detach().cpu().numpy().tolist(), top_k=20, filter=filter)
     simularities = []
-    
+
     for match in data["matches"]:
         score = match["score"]
         simularities.append(score)
-        
+
     simularities = torch.tensor(simularities).to(DEVICE)
     return simularities.mean().item()
 
 for idx, (path, label) in enumerate(images):
-    
+
     image = Image.open(path)
-    
+
     c1, c2, v1, v2, out1, out2 = get_predictions(image)
-    
-    
+
+
     probas = preds_to_data(c1, c2).unsqueeze(0).to(DEVICE)
     prediction = Morpheus(probas).argmax(1).item()
     out3 = list(CLASSES_1.keys())[prediction]
@@ -74,14 +74,14 @@ for idx, (path, label) in enumerate(images):
         out3=out3, # the most confident class from the third model
         probas=probas # the probabilities from the first and second model
     )
-    
+
     if label == final_verdict:
         accuracy += 1
         status.append("✅")
     else:
         status.append("❌")
         wrong.append((v1, v2, label, final_verdict, path))
-        
+
     paths.append(path)
     labels.append(label)
     predictions.append(final_verdict)
@@ -89,10 +89,10 @@ for idx, (path, label) in enumerate(images):
     neo_.append(out1)
     trinity_.append(out2)
     morpheus_.append(out3)
-        
+
     print(f"{ '✅' if label == final_verdict else '❌'} {idx+1}. #{path}", label, "->", final_verdict)
     print("\n")
-    
+
 print(f"Accuracy: {accuracy/len(images)}")
 print(f"Mistakes {len(wrong)}/{len(images)}")
 
@@ -108,11 +108,11 @@ prediction_df.to_csv(SAVE_PATH, index=False)
 
 
 for (v1, v2, label, final_verdict, path) in wrong:
-    
+
     image = Image.open(path)
-    
+
     fig, ax = plt.subplots(1, 3, figsize=(10, 10))
-    
+
     ax[0].pie(v1.values(), labels=v1.keys())
     ax[0].margins(x=20, y=10)
     ax[0].set_title("First Model")
@@ -125,6 +125,6 @@ for (v1, v2, label, final_verdict, path) in wrong:
     ax[2].axis("off")
     ax[2].margins(x=20, y=10)
     ax[2].set_title(final_verdict)
-    
+
     plt.show()
-    
+

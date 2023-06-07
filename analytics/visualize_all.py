@@ -2,18 +2,20 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 
-DATA_PATH = "./data/predictions_2.csv"
+DATA_PATH = "../data/predictions_2.csv"
 
 def get_mistake_data():
     df = pd.read_csv(DATA_PATH)
-    
+    print(df.head())
+
     # in the cols where status is "wrong" get the value of label and prediction
     df = df[df["status"] == "❌"]
     df = df[["label", "prediction"]]
-    
+
     return df
-    
+
 mistakes_df = get_mistake_data()
+print(mistakes_df)
 
 def absolute_value(val):
     a  = np.round(val/100.*len(mistakes_df), 0)
