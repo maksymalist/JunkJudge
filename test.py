@@ -9,7 +9,7 @@ from db import query_embedding
 
 seed_everything()
 
-SAVE_PATH = "./data/predictions_4.csv"
+SAVE_PATH = "./data/predictions_5.csv"
 img_dir = "./images/"
 images = []
 
