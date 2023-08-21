@@ -41,7 +41,7 @@ neo_ = []
 trinity_ = []
 morpheus_ = []
 
-def embedding_preds(out):
+def embedding_preds(out, probas):
     filter={
         "class": {"$eq": out},
     }
@@ -85,7 +85,7 @@ for idx, (path, label) in enumerate(images):
     paths.append(path)
     labels.append(label)
     predictions.append(final_verdict)
-    pinecone_.append(embedding_preds(final_verdict))
+    pinecone_.append(embedding_preds(final_verdict, probas))
     neo_.append(out1)
     trinity_.append(out2)
     morpheus_.append(out3)
