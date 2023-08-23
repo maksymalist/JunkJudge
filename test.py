@@ -9,11 +9,9 @@ from db import query_embedding
 
 seed_everything()
 
-SAVE_PATH = "./data/predictions_5.csv"
+SAVE_PATH = "./data/neo_predictions.csv"
 img_dir = "./images/"
 images = []
-
-wrong_big = ['trash130.jpg', 'trash131.jpg', 'trash125.jpg', 'trash13.jpg', 'trash119.jpg', 'trash11.jpg', 'trash132.jpg', 'trash122.jpg', 'trash14.jpg', 'trash121.jpg', 'trash17.jpg', 'trash108.jpg', 'trash71.jpg', 'trash58.jpg', 'trash72.jpg', 'trash63.jpg', 'trash62.jpg', 'trash60.jpg', 'trash8.jpg', 'trash9.jpg', 'trash49.jpg', 'trash50.jpg', 'trash78.jpg', 'trash5.jpg', 'trash92.jpg', 'trash51.jpg', 'trash84.jpg', 'trash7.jpg', 'trash6.jpg', 'trash56.jpg', 'trash42.jpg', 'trash81.jpg', 'trash41.jpg', 'trash55.jpg', 'trash82.jpg', 'trash96.jpg', 'trash83.jpg', 'trash27.jpg', 'trash111.jpg', 'trash110.jpg', 'trash104.jpg', 'trash24.jpg', 'trash106.jpg', 'trash107.jpg', 'trash113.jpg', 'trash25.jpg', 'trash31.jpg', 'trash35.jpg', 'trash21.jpg', 'trash34.jpg', 'trash116.jpg', 'trash22.jpg', 'trash128.jpg', 'trash36.jpg', 'trash115.jpg']
 
 def get_images(folder):
     for entry in os.scandir(folder):
@@ -76,23 +74,14 @@ for idx, (path, label) in enumerate(images):
         out3=out3, # the most confident class from the third model
         probas=probas # the probabilities from the first and second model
     )
-    
-    name = f'{label}{idx}.jpg'
-    
-    print(name)
 
-    if name in wrong_big:
-        status.append("❌")
-        wrong.append((v1, v2, label, final_verdict, path))
-        img = Image.open(path)
-        img.save(f"./data/wrong2/{label}{idx}.jpg")
-        
-    else:
+
+    if label == out1:
         accuracy += 1
         status.append("✅")
-        img = Image.open(path)
-        img.save(f"./data/trash/{label}{idx}.jpg")
-        
+    else:
+        status.append("❌")
+        wrong.append((v1, v2, label, final_verdict, path))
 
     paths.append(path)
     labels.append(label)
