@@ -65,24 +65,24 @@ class MorpheusModel(nn.Module):
     return output
   
 def CONV_NN_V2(num_classes):
-  
-  # load the pretrained model because what's the point of re-inventing the wheel??
-  model = models.convnext_base(weights=ConvNeXt_Base_Weights.DEFAULT) # in the new version of PyTorch, you can't use pretrained=True
-  
-  # Freeze all the layers because we only want to train the new layers
-  
-  for param in model.parameters():
-      # disable gradients because we don't need to include pretrained data in the backprop
-      param.requires_grad = False
-      
-      
-  # Replace the last layer with a MLP mixer with dropout
-  
-  model.classifier[-1] = nn.Sequential(
-      nn.Linear(1024, 256),
-      nn.ReLU(),
-      nn.Dropout(0.2),
-      nn.Linear(256, num_classes)
-  )
-  
-  return model
+
+    # load the pretrained model because what's the point of re-inventing the wheel??
+    model = models.convnext_base(weights=ConvNeXt_Base_Weights.DEFAULT) # in the new version of PyTorch, you can't use pretrained=True
+
+    # Freeze all the layers because we only want to train the new layers
+
+    for param in model.parameters():
+        # disable gradients because we don't need to include pretrained data in the backprop
+        param.requires_grad = False
+
+
+    # Replace the last layer with a MLP mixer with dropout
+
+    model.classifier[-1] = nn.Sequential(
+        nn.Linear(1024, 256),
+        nn.ReLU(),
+        nn.Dropout(0.2),
+        nn.Linear(256, num_classes)
+    )
+
+    return model

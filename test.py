@@ -9,8 +9,8 @@ from db import query_embedding
 
 seed_everything()
 
-SAVE_PATH = "./data/neo_predictions.csv"
-img_dir = "./images/"
+SAVE_PATH = "./data/small_morpheus_predictions_2.csv"
+img_dir = "./small_test/"
 images = []
 
 def get_images(folder):
@@ -76,7 +76,7 @@ for idx, (path, label) in enumerate(images):
     )
 
 
-    if label == out1:
+    if label == final_verdict:
         accuracy += 1
         status.append("✅")
     else:

@@ -2,7 +2,7 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 
-DATA_PATH = "../data/predictions_2.csv"
+DATA_PATH = "../data/trinity_predictions.csv"
 
 def get_mistake_data():
     df = pd.read_csv(DATA_PATH)

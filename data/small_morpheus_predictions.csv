@@ -1,0 +1,13 @@
+status,path,label,prediction,pinecone_,neo_,trinity_,morpheus_
+✅,./small_test/paper/IMG_2460.jpg,paper,paper,0.9999189376831055,paper,paper,paper
+✅,./small_test/paper/IMG_2443.jpg,paper,paper,0.9931352734565735,paper,trash,paper
+✅,./small_test/paper/IMG_2496.jpg,paper,paper,0.9993788003921509,paper,paper,paper
+✅,./small_test/paper/IMG_2427.jpg,paper,paper,0.9914343953132629,paper,trash,paper
+✅,./small_test/metal/IMG_2462.jpg,metal,metal,0.991396427154541,metal,metal,metal
+✅,./small_test/cardboard/IMG_2428.jpg,cardboard,cardboard,0.9957005381584167,cardboard,paper,cardboard
+✅,./small_test/cardboard/IMG_2420.jpg,cardboard,cardboard,0.9997377395629883,cardboard,cardboard,cardboard
+✅,./small_test/trash/IMG_2429.jpg,trash,trash,0.3888774514198303,cardboard,trash,cardboard
+✅,./small_test/trash/IMG_2451.jpg,trash,trash,0.38489609956741333,cardboard,trash,cardboard
+✅,./small_test/trash/IMG_2446.jpg,trash,trash,0.3919128477573395,cardboard,trash,cardboard
+✅,./small_test/trash/IMG_2447.jpg,trash,trash,0.4684365391731262,plastic,trash,plastic
+✅,./small_test/plastic/IMG_2450.jpg,plastic,plastic,0.9852100610733032,plastic,trash,plastic
